@@ -1,0 +1,317 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  *{font-family:'Poppins',sans-serif}
+  .wrap{padding:1rem 0}
+  .main-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+  .main-header{padding:20px 26px;border-bottom:0.5px solid var(--color-border-tertiary)}
+  .main-header h3{font-size:24px;font-weight:700;color:var(--color-text-primary);margin:0 0 8px}
+  .meta-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+  .meta-pill{font-size:18px;font-weight:500;padding:5px 14px;border-radius:20px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);display:flex;align-items:center;gap:6px}
+  .context-bar{background:#EAF3DE;border-bottom:0.5px solid #97C459;padding:12px 26px;display:flex;align-items:flex-start;gap:12px}
+  .context-bar span{font-size:18px;color:#27500A;line-height:1.6}
+  .panel{padding:22px 26px;border-bottom:0.5px solid var(--color-border-tertiary)}
+  .panel:last-child{border-bottom:none}
+  .panel-label{font-size:18px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .panel-label span{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);font-size:16px;font-weight:700;color:var(--color-text-primary);flex-shrink:0}
+  .illus{display:flex;justify-content:center;margin-bottom:18px}
+  .formula-box{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:14px 18px;font-size:20px;text-align:center;color:var(--color-text-primary);margin-bottom:14px;line-height:1.6}
+  .ujian-row{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:var(--border-radius-md);margin-bottom:10px;font-size:20px;line-height:1.6}
+  .ujian-row:last-child{margin-bottom:0}
+  .ujian-ok{background:#EAF3DE;border:0.5px solid #97C459}
+  .ujian-bad{background:#FCEBEE;border:0.5px solid #F09595}
+  .node{padding:9px 20px;border-radius:8px;font-size:20px;font-weight:700;white-space:nowrap}
+  .n-green{background:#27500A;color:#C0DD97}
+  .n-teal{background:#085041;color:#9FE1CB}
+  .n-blue{background:#0C447C;color:#B5D4F4}
+  .n-purple{background:#26215C;color:#CECBF6}
+  .n-amber{background:#633806;color:#FAC775;border:2px solid #EF9F27}
+  .badge{font-size:18px;font-weight:500;padding:5px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+  .b-green{background:#EAF3DE;color:#27500A;border:0.5px solid #97C459}
+  .b-teal{background:#E1F5EE;color:#085041;border:0.5px solid #5DCAA5}
+  .b-purple{background:#EEEDFE;color:#26215C;border:0.5px solid #AFA9EC}
+  .b-amber{background:#FAEEDA;color:#633806;border:0.5px solid #FAC775}
+  .terjemah-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+  .tj{border-radius:var(--border-radius-md);padding:14px 16px;font-size:20px;line-height:1.7}
+  .tj-ok{background:#EAF3DE;border:0.5px solid #97C459;color:#173404}
+  .tj-bad{background:#FCEBEE;border:0.5px solid #F09595;color:#501313}
+  .side-note{font-size:18px;color:var(--color-text-secondary);padding:12px 16px;background:var(--color-background-secondary);border-left:2px solid #97C459;margin-top:14px;line-height:1.7}
+  .urea-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .urea-card{border-radius:var(--border-radius-md);padding:16px 18px;font-size:20px;line-height:1.8}
+  .uc-amber{background:#FAEEDA;border:0.5px solid #FAC775;color:#412402}
+  .uc-blue{background:#E6F1FB;border:0.5px solid #85B7EB;color:#042C53}
+  .def-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .def-card{border-radius:var(--border-radius-md);padding:14px 16px;font-size:20px;line-height:1.7}
+  .def-ok{background:#EAF3DE;border:0.5px solid #97C459;color:#173404}
+  .def-warn{background:#FAEEDA;border:0.5px solid #FAC775;color:#412402}
+  .gap-row{display:grid;grid-template-columns:1fr 36px 1fr;gap:8px;align-items:center;margin-bottom:12px}
+  .lang-box{border-radius:var(--border-radius-md);padding:14px 16px;font-size:20px;line-height:1.7}
+  .lb-en{background:#E6F1FB;border:0.5px solid #85B7EB;color:#042C53}
+  .lb-bm{background:#EAF3DE;border:0.5px solid #97C459;color:#173404}
+  .lang-vs{text-align:center;font-size:24px;color:var(--color-border-secondary)}
+  .lang-label{font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;opacity:.6;margin-bottom:4px}
+  .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .split-box{border-radius:var(--border-radius-md);padding:16px 18px;font-size:20px;line-height:1.7}
+  .sb-en{background:#E6F1FB;border:0.5px solid #85B7EB;color:#042C53}
+  .sb-bm{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary)}
+  .split-node{display:inline-block;padding:7px 18px;border-radius:6px;font-size:20px;font-weight:700;margin-top:10px}
+  .sn-teal{background:#085041;color:#9FE1CB}
+  .sn-red{background:#791F1F;color:#F7C1C1}
+  .split-note{font-size:18px;color:var(--color-text-secondary);padding:12px 16px;background:var(--color-background-secondary);border-left:2px solid #85B7EB;margin-top:14px;line-height:1.7}
+  .kesimpulan-panel{padding:24px 26px;background:var(--color-background-secondary)}
+  .kesimpulan-item{display:flex;gap:18px;align-items:flex-start;padding:16px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+  .kesimpulan-item:last-child{border-bottom:none;padding-bottom:0}
+  .k-num{width:36px;height:36px;border-radius:50%;background:#27500A;color:#C0DD97;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+  .k-body h4{font-size:20px;font-weight:700;color:var(--color-text-primary);margin:0 0 6px}
+  .k-body p{font-size:20px;color:var(--color-text-secondary);margin:0;line-height:1.7}
+  .note-sm{font-size:18px;color:var(--color-text-secondary)}
+</style>
+
+<h2 class="sr-only">Infografik rumusan enam contoh dan tiga kesimpulan daripada rakaman audio kuliah minggu 13 tentang hipernim dan hiponim dalam peristilahan bahasa Melayu</h2>
+
+<div class="wrap">
+<div class="main-card">
+
+  <div class="main-header">
+    <h3>Hipernim dan hiponim dalam peristilahan bahasa Melayu</h3>
+    <div class="meta-row">
+      <span class="meta-pill"><i class="ti ti-headphones" aria-hidden="true" style="font-size:20px"></i> Rumusan rakaman audio</span>
+      <span class="meta-pill"><i class="ti ti-calendar" aria-hidden="true" style="font-size:20px"></i> Minggu 13</span>
+      <span class="meta-pill"><i class="ti ti-school" aria-hidden="true" style="font-size:20px"></i> HBT 301/4 · USM</span>
+    </div>
+  </div>
+
+  <div class="context-bar">
+    <i class="ti ti-bulb" aria-hidden="true" style="font-size:22px;color:#3B6D11;flex-shrink:0;margin-top:2px"></i>
+    <span>Infografik ini merumuskan enam contoh yang dibincangkan dalam rakaman audio kuliah Minggu 13 — Kajian Bidang Terpilih: Pembentukan Istilah Bidang Sains. Gunakan bersama transkrip sebagai bahan ulang kaji.</span>
+  </div>
+
+  <!-- P1 -->
+  <div class="panel">
+    <div class="panel-label"><span>1</span> Ujian asas hipernim-hiponim</div>
+    <div class="illus">
+      <svg width="360" height="90" viewBox="0 0 360 90" role="img"><title>Ilustrasi ujian A adalah sejenis B</title>
+        <defs><marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#B4B2A9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="10" y="10" width="150" height="70" rx="12" fill="#EAF3DE" stroke="#97C459" stroke-width="1"/>
+        <text x="85" y="40" text-anchor="middle" font-family="Poppins,sans-serif" font-size="15" font-weight="700" fill="#27500A">Makanan</text>
+        <text x="85" y="60" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" fill="#3B6D11">HIPERNIM</text>
+        <line x1="160" y1="45" x2="198" y2="45" stroke="#B4B2A9" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <rect x="200" y="10" width="150" height="70" rx="12" fill="#FAEEDA" stroke="#FAC775" stroke-width="1"/>
+        <text x="275" y="40" text-anchor="middle" font-family="Poppins,sans-serif" font-size="15" font-weight="700" fill="#633806">Nasi lemak</text>
+        <text x="275" y="60" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" fill="#854F0B">HIPONIM</text>
+      </svg>
+    </div>
+    <div class="formula-box"><strong>"A adalah sejenis B"</strong> — jika masuk akal, A = hiponim &nbsp;·&nbsp; B = hipernim</div>
+    <div class="ujian-row ujian-ok">
+      <span style="flex-shrink:0;color:#3B6D11;font-size:22px">✓</span>
+      <span style="color:#173404"><strong>"Nasi lemak adalah sejenis makanan"</strong> — masuk akal<br>
+      <span class="note-sm">Nasi lemak = hiponim · Makanan = hipernim · Kohiponim: mee goreng, roti canai</span></span>
+    </div>
+    <div class="ujian-row ujian-bad">
+      <span style="flex-shrink:0;color:#791F1F;font-size:22px">✗</span>
+      <span style="color:#501313"><strong>"Makanan adalah sejenis nasi lemak"</strong> — tidak masuk akal<br>
+      <span class="note-sm">Hubungan hipernim-hiponim tidak boleh dibalikkan</span></span>
+    </div>
+  </div>
+
+  <!-- P2 -->
+  <div class="panel">
+    <div class="panel-label"><span>2</span> Hierarki tiga aras — baja, baja nitrogen, urea</div>
+    <div class="illus">
+      <svg width="500" height="160" viewBox="0 0 500 160" role="img"><title>Hierarki tiga aras baja fertilizer baja nitrogen dan urea</title>
+        <defs><marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="160" y="8" width="180" height="40" rx="8" fill="#27500A"/>
+        <text x="250" y="33" text-anchor="middle" font-family="Poppins,sans-serif" font-size="15" font-weight="700" fill="#C0DD97">Baja (fertilizer)</text>
+        <line x1="200" y1="48" x2="110" y2="80" stroke="#888780" stroke-width="1" marker-end="url(#arr3)"/>
+        <line x1="250" y1="48" x2="250" y2="80" stroke="#888780" stroke-width="1" marker-end="url(#arr3)"/>
+        <line x1="300" y1="48" x2="390" y2="80" stroke="#888780" stroke-width="1" marker-end="url(#arr3)"/>
+        <rect x="40" y="80" width="140" height="36" rx="8" fill="#085041"/>
+        <text x="110" y="103" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#9FE1CB">Baja nitrogen</text>
+        <rect x="190" y="80" width="120" height="36" rx="8" fill="#0C447C"/>
+        <text x="250" y="103" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#B5D4F4">Baja fosfat</text>
+        <rect x="320" y="80" width="130" height="36" rx="8" fill="#26215C"/>
+        <text x="385" y="103" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#CECBF6">Baja kalium</text>
+        <line x1="110" y1="116" x2="110" y2="132" stroke="#888780" stroke-width="1" marker-end="url(#arr3)"/>
+        <rect x="46" y="132" width="128" height="22" rx="6" fill="#633806" stroke="#EF9F27" stroke-width="1.5"/>
+        <text x="110" y="148" text-anchor="middle" font-family="Poppins,sans-serif" font-size="13" font-weight="700" fill="#FAC775">urea ★</text>
+      </svg>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+      <div class="node n-green">Baja (fertilizer)</div>
+      <div class="badge b-green">Hipernim utama</div>
+      <span class="note-sm">merangkumi semua jenis baja</span>
+    </div>
+    <div style="width:1px;height:16px;background:var(--color-border-secondary);margin-left:40px"></div>
+    <div style="display:flex;gap:0;align-items:flex-start;padding-left:36px">
+      <div style="width:1px;min-height:130px;background:var(--color-border-secondary);margin-right:14px;flex-shrink:0"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div style="width:16px;height:1px;background:var(--color-border-secondary);flex-shrink:0"></div>
+          <div class="node n-teal">Baja nitrogen</div>
+          <div class="badge b-purple">Hiponim kepada baja</div>
+          <div class="badge b-teal">Hipernim kepada urea</div>
+        </div>
+        <div style="padding-left:30px">
+          <div style="display:flex;align-items:center;gap:8px"><div style="width:1px;height:22px;background:var(--color-border-secondary);flex-shrink:0"></div></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:-4px;flex-wrap:wrap">
+            <div style="width:1px;height:10px;background:var(--color-border-secondary);flex-shrink:0"></div>
+            <div style="width:14px;height:1px;background:var(--color-border-secondary);flex-shrink:0"></div>
+            <div class="node n-amber">Urea</div>
+            <div class="badge b-amber">Hiponim kepada baja nitrogen</div>
+            <span class="note-sm">aras paling khusus</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div style="width:16px;height:1px;background:var(--color-border-secondary);flex-shrink:0"></div>
+          <div class="node n-blue">Baja fosfat</div>
+          <div class="badge b-purple">Hiponim kepada baja</div>
+          <span class="note-sm">kohiponim kepada baja nitrogen</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div style="width:16px;height:1px;background:var(--color-border-secondary);flex-shrink:0"></div>
+          <div class="node n-purple">Baja kalium</div>
+          <div class="badge b-purple">Hiponim kepada baja</div>
+          <span class="note-sm">kohiponim kepada baja nitrogen</span>
+        </div>
+      </div>
+    </div>
+    <div class="side-note" style="margin-top:14px"><strong>Baja nitrogen serentak dua peranan</strong> — hiponim kepada baja (berada di bawahnya) dan hipernim kepada urea (berada di atasnya). Aras hierarki menentukan peranannya.</div>
+    <div class="terjemah-grid">
+      <div class="tj tj-ok"><strong>✓ Tepat</strong><br>"apply urea" → gunakan urea<br>"apply fertilizer" → gunakan baja</div>
+      <div class="tj tj-bad"><strong>✗ Silap</strong><br>"apply urea" → gunakan baja<br>"apply fertilizer" → gunakan urea</div>
+    </div>
+  </div>
+
+  <!-- P3 -->
+  <div class="panel">
+    <div class="panel-label"><span>3</span> Kenapa urea kekal "urea" dalam BM — bukan diterjemah?</div>
+    <div class="illus">
+      <svg width="420" height="80" viewBox="0 0 420 80" role="img"><title>Ilustrasi fertilizer boleh diterjemah tetapi urea tidak boleh diterjemah kerana nama kimia universal</title>
+        <rect x="10" y="10" width="180" height="60" rx="10" fill="#FAEEDA" stroke="#FAC775" stroke-width="1"/>
+        <text x="100" y="36" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#633806">fertilizer</text>
+        <text x="100" y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#854F0B">konsep → boleh terjemah</text>
+        <text x="215" y="46" text-anchor="middle" font-family="Poppins,sans-serif" font-size="22" fill="#B4B2A9">≠</text>
+        <rect x="235" y="10" width="175" height="60" rx="10" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
+        <text x="322" y="36" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#0C447C">urea CO(NH₂)₂</text>
+        <text x="322" y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#185FA5">nama kimia IUPAC → kekal</text>
+      </svg>
+    </div>
+    <div class="urea-grid">
+      <div class="urea-card uc-amber"><strong>Fertilizer → baja</strong><br>Boleh diterjemah kerana ia konsep kategori — merujuk kumpulan bahan, bukan satu entiti kimia.</div>
+      <div class="urea-card uc-blue"><strong>Urea → urea</strong><br>Tidak diterjemah kerana ia nama molekul kimia CO(NH₂)₂ — ditetapkan oleh IUPAC, universal merentas semua bahasa.</div>
+    </div>
+    <div class="side-note">Nama alternatif: <strong>karbamida</strong> — digunakan dalam beberapa bahasa Eropah Timur untuk molekul yang sama, bukan terjemahan BM. DBP kekalkan urea agar komunikasi saintifik antarabangsa tidak terputus.</div>
+  </div>
+
+  <!-- P4 -->
+  <div class="panel">
+    <div class="panel-label"><span>4</span> Genus et differentia — formula definisi kamus</div>
+    <div class="illus">
+      <svg width="460" height="72" viewBox="0 0 460 72" role="img"><title>Formula genus et differentia X ialah hipernim yang ciri pembeza</title>
+        <rect x="10" y="10" width="80" height="52" rx="8" fill="#EAF3DE" stroke="#97C459" stroke-width="1"/>
+        <text x="50" y="40" text-anchor="middle" font-family="Poppins,sans-serif" font-size="13" font-weight="700" fill="#27500A">X ialah</text>
+        <rect x="104" y="10" width="120" height="52" rx="8" fill="#27500A"/>
+        <text x="164" y="33" text-anchor="middle" font-family="Poppins,sans-serif" font-size="13" font-weight="700" fill="#C0DD97">hipernim</text>
+        <text x="164" y="52" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#97C459">← wajib tepat</text>
+        <rect x="238" y="10" width="60" height="52" rx="8" fill="#EAF3DE" stroke="#97C459" stroke-width="1"/>
+        <text x="268" y="40" text-anchor="middle" font-family="Poppins,sans-serif" font-size="13" font-weight="700" fill="#27500A">yang</text>
+        <rect x="312" y="10" width="140" height="52" rx="8" fill="#085041"/>
+        <text x="382" y="33" text-anchor="middle" font-family="Poppins,sans-serif" font-size="13" font-weight="700" fill="#9FE1CB">ciri pembeza</text>
+        <text x="382" y="52" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#5DCAA5">differentia</text>
+      </svg>
+    </div>
+    <div class="def-row">
+      <div class="def-card def-ok"><strong>✓ Tepat</strong><br>"Mawar ialah <u>sejenis bunga</u> yang berduri, harum baunya, dan berwarna merah, putih, atau merah jambu."<br><span class="note-sm" style="margin-top:6px;display:block">Hipernim = bunga → anchor kepada kategori betul</span></div>
+      <div class="def-card def-warn"><strong>⚠ Terlalu luas</strong><br>"Mawar ialah <u>tumbuhan</u> yang berduri..."<br><span class="note-sm" style="margin-top:6px;display:block">Tumbuhan lebih tinggi dari bunga dalam hierarki — definisi jadi kurang tepat</span></div>
+    </div>
+  </div>
+
+  <!-- P5 -->
+  <div class="panel">
+    <div class="panel-label"><span>5</span> Kekosongan leksikal — BI vs BM</div>
+    <div class="illus">
+      <svg width="460" height="76" viewBox="0 0 460 76" role="img"><title>Ilustrasi kekosongan leksikal finger toe dalam bahasa Inggeris berbanding jari dalam bahasa Melayu</title>
+        <rect x="10" y="8" width="190" height="60" rx="10" fill="#E6F1FB" stroke="#85B7EB" stroke-width="1"/>
+        <text x="105" y="28" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" fill="#0C447C" font-weight="700">BAHASA INGGERIS</text>
+        <text x="60" y="52" text-anchor="middle" font-family="Poppins,sans-serif" font-size="15" font-weight="700" fill="#042C53">finger</text>
+        <text x="150" y="52" text-anchor="middle" font-family="Poppins,sans-serif" font-size="15" font-weight="700" fill="#042C53">toe</text>
+        <line x1="105" y1="34" x2="105" y2="58" stroke="#85B7EB" stroke-width="0.5" stroke-dasharray="3,2"/>
+        <text x="230" y="45" text-anchor="middle" font-family="Poppins,sans-serif" font-size="22" fill="#B4B2A9">↔</text>
+        <rect x="260" y="8" width="190" height="60" rx="10" fill="#EAF3DE" stroke="#97C459" stroke-width="1"/>
+        <text x="355" y="28" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" fill="#27500A" font-weight="700">BAHASA MELAYU</text>
+        <text x="355" y="54" text-anchor="middle" font-family="Poppins,sans-serif" font-size="17" font-weight="700" fill="#173404">jari</text>
+      </svg>
+    </div>
+    <div class="gap-row">
+      <div class="lang-box lb-en"><div class="lang-label">Bahasa Inggeris</div><strong>finger</strong> — jari tangan<br><strong>toe</strong> — jari kaki<br><span class="note-sm">2 hiponim berbeza</span></div>
+      <div class="lang-vs">↔</div>
+      <div class="lang-box lb-bm"><div class="lang-label">Bahasa Melayu</div><strong>jari</strong> — 1 hipernim<br>perlu pengkhusus: tangan / kaki<br><span class="note-sm">kekosongan di aras hiponim</span></div>
+    </div>
+    <div class="gap-row">
+      <div class="lang-box lb-en"><div class="lang-label">Bahasa Inggeris</div><strong>disease</strong> — punca klinikal, ada diagnosis<br><strong>illness</strong> — pengalaman subjektif pesakit<br><span class="note-sm">2 perspektif berbeza</span></div>
+      <div class="lang-vs">↔</div>
+      <div class="lang-box lb-bm"><div class="lang-label">Bahasa Melayu</div><strong>penyakit</strong> — menanggung beban kedua-dua konsep<br><br><span class="note-sm">kekosongan leksikal dalam teks perubatan</span></div>
+    </div>
+  </div>
+
+  <!-- P6 -->
+  <div class="panel">
+    <div class="panel-label"><span>6</span> Faktor sosiobudaya — "drug" pecah menjadi dua dalam BM</div>
+    <div class="illus">
+      <svg width="420" height="100" viewBox="0 0 420 100" role="img"><title>Ilustrasi drug dalam bahasa Inggeris terpecah kepada ubat dan dadah dalam bahasa Melayu</title>
+        <defs><marker id="arr4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="150" y="8" width="120" height="38" rx="8" fill="#0C447C"/>
+        <text x="210" y="32" text-anchor="middle" font-family="Poppins,sans-serif" font-size="16" font-weight="700" fill="#B5D4F4">drug (BI)</text>
+        <line x1="180" y1="46" x2="100" y2="72" stroke="#888780" stroke-width="1" marker-end="url(#arr4)"/>
+        <line x1="240" y1="46" x2="318" y2="72" stroke="#888780" stroke-width="1" marker-end="url(#arr4)"/>
+        <rect x="30" y="72" width="130" height="22" rx="6" fill="#085041"/>
+        <text x="95" y="87" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#9FE1CB">ubat</text>
+        <rect x="258" y="72" width="130" height="22" rx="6" fill="#791F1F"/>
+        <text x="323" y="87" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="700" fill="#F7C1C1">dadah</text>
+      </svg>
+    </div>
+    <div class="split-grid">
+      <div class="split-box sb-en">
+        <div style="font-size:18px;font-weight:700;margin-bottom:8px;opacity:.7;text-transform:uppercase;letter-spacing:.05em">Bahasa Inggeris</div>
+        <strong>drug</strong> — hipernim neutral<br>merangkumi semua bahan farmakologi tanpa konotasi negatif
+      </div>
+      <div class="split-box sb-bm">
+        <div style="font-size:18px;font-weight:700;margin-bottom:10px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em">Bahasa Melayu</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <div><div class="split-node sn-teal">ubat</div><div class="note-sm" style="margin-top:6px">konteks perubatan<br>konotasi positif</div></div>
+          <div><div class="split-node sn-red">dadah</div><div class="note-sm" style="margin-top:6px">konteks penyalahgunaan<br>konotasi negatif</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="split-note">Satu hipernim BI terpecah kepada dua istilah BM yang berbeza domain — bukti bahawa peristilahan tidak berlaku dalam vakum; bahasa, budaya, dan nilai masyarakat mempengaruhi struktur hierarki istilah</div>
+  </div>
+
+  <!-- KESIMPULAN -->
+  <div class="kesimpulan-panel">
+    <div class="panel-label" style="margin-bottom:16px"><span style="background:#27500A;color:#C0DD97;border-color:#27500A">✓</span> Tiga kesimpulan penting</div>
+    <div class="kesimpulan-item">
+      <div class="k-num">1</div>
+      <div class="k-body">
+        <h4>Faham hierarki konsep sebelum pilih padanan istilah</h4>
+        <p>Padanan istilah bukan rawak — ada logiknya. Konsep umum biasanya menggunakan perkataan Melayu yang sedia ada, manakala konsep yang lebih teknikal dan khusus sering menggunakan istilah pinjaman atau istilah hibrid.</p>
+      </div>
+    </div>
+    <div class="kesimpulan-item">
+      <div class="k-num">2</div>
+      <div class="k-body">
+        <h4>Dalam terjemahan saintifik, kekalkan aras hierarki yang sama</h4>
+        <p>Jangan hipernimkan hiponim, jangan hiponimkan hipernim. Kedua-duanya adalah kesilapan yang mengubah makna teks asal.</p>
+      </div>
+    </div>
+    <div class="kesimpulan-item">
+      <div class="k-num">3</div>
+      <div class="k-body">
+        <h4>Peristilahan berlaku dalam konteks sosial dan budaya</h4>
+        <p>Kadang-kadang satu hipernim dalam bahasa sumber perlu dipecahkan kepada beberapa istilah dalam bahasa sasaran — dan itu bukan kelemahan, itu kepekaan linguistik.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
